@@ -1,0 +1,26 @@
+function rot13(str) { // LBH QVQ VG!
+  str = str.split("").map(cipher).join("");
+  
+  return str;
+}
+
+function cipher(inputLetter) {
+  var regex = /[^a-zA-Z]/g;
+  if(regex.test(inputLetter)) {
+    return inputLetter;
+  }
+  
+  var codeAscii = inputLetter.charCodeAt(0);
+  if(codeAscii > 77) {
+    codeAscii -= 13;
+  }
+  else {
+    codeAscii += 13;
+  }
+  
+  return String.fromCharCode(codeAscii);
+} 
+
+console.log(cipher("A"));
+
+console.log(rot13("SERR PBQR PNZC"));
